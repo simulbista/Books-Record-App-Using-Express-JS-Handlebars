@@ -1,0 +1,82 @@
+
+body{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin:0;
+}
+
+content{
+    padding:20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex:1;
+    flex-grow: 1;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    color: blueviolet;
+}
+
+h2{
+    padding-left: 100px;
+    color: blueviolet;
+}
+
+li{
+    list-style: none;
+    width: 500px;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: black solid 2px;
+}
+
+.odd{
+    background-color: bisque;
+}
+
+
+.even{
+    background-color: aquamarine;
+}
+
+.header,.footer{
+    margin: 0;
+    background-color: blueviolet;
+    padding: 5px;
+    height: 50px;
+    text-align: center;
+    color:white;
+}
+
+#pupper{
+    width: 330px;
+    height: 300px;
+}
+
+.books-ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.books-ul-li{
+    background-color: beige;
+    margin-bottom: 50px;
+    width: 350px;
+}
+
+search{
+    text-align: center;
+    padding: 50px;
+    width: 95%;
+}
+
+#form-text,#form-submit{
+    font-size:  x-large;
+    background-color: beige;
+}
