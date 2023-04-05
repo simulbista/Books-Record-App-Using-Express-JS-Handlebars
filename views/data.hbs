@@ -1,36 +1,49 @@
 <h1>Books</h1>
 <search>
   <form method="POST" action="/submittedTitle">
-    <input type="text" name="title" id= "form-text" placeholder="Enter Book Title">
-    <input type="submit" id= "form-submit"  value="Search">
+    <input
+      type="text"
+      name="title"
+      id="form-text"
+      placeholder="Enter Book Title"
+    />
+    <input type="submit" id="form-submit" value="Search" />
   </form>
 </search>
 <content>
-<ul class="books-ul">
-  {{#each books}}
-    {{#if (and searchedTitle (eq this.title searchedTitle))}}
+  {{#if foundBook}}
+    <ul class="books-ul">
       <li class="books-ul-li">
-        <h2>{{this.title}}</h2>
-        <p><strong>ISBN:</strong> {{this.isbn}}</p>
-        <p><strong>Page Count:</strong> {{this.pageCount}}</p>
-        <p><strong>Published Date:</strong> {{this.publishedDate.$date}}</p>
-        <p><strong>Short Description:</strong> {{this.shortDescription}}</p>
-        <p><strong>Long Description:</strong> {{this.longDescription}}</p>
-        <p><strong>Authors:</strong> {{this.authors}}</p>
-        <p><strong>Categories:</strong> {{this.categories}}</p>
+        <h1>The book with the title " {{submittedTitle}} " exists:</h1>
+        <h2>{{foundBook.title}}</h2>
+        <p><strong>ISBN:</strong> {{foundBook.isbn}}</p>
+        <p><strong>Page Count:</strong> {{foundBook.pageCount}}</p>
+        <p><strong>Published Date:</strong>
+          {{foundBook.publishedDate.$date}}</p>
+        <p><strong>Short Description:</strong>
+          {{foundBook.shortDescription}}</p>
+        <p><strong>Long Description:</strong> {{foundBook.longDescription}}</p>
+        <p><strong>Authors:</strong> {{foundBook.authors}}</p>
+        <p><strong>Categories:</strong> {{foundBook.categories}}</p>
       </li>
-    {{else if (not searchedTitle)}}
-      <li class="books-ul-li">
-        <h2>{{this.title}}</h2>
-        <p><strong>ISBN:</strong> {{this.isbn}}</p>
-        <p><strong>Page Count:</strong> {{this.pageCount}}</p>
-        <p><strong>Published Date:</strong> {{this.publishedDate.$date}}</p>
-        <p><strong>Short Description:</strong> {{this.shortDescription}}</p>
-        <p><strong>Long Description:</strong> {{this.longDescription}}</p>
-        <p><strong>Authors:</strong> {{this.authors}}</p>
-        <p><strong>Categories:</strong> {{this.categories}}</p>
-      </li>
-    {{/if}}
-  {{/each}}
-</ul>
+    </ul>
+  {{else if notfoundBook}}
+    <h1> The book with the title {{submittedTitle}} does not exist!</h1>
+  {{else}}
+    {{! default mode i.e. display all the books }}
+    <ul class="books-ul"></ul>
+    {{#each books}}
+        <li class="books-ul-li">
+          <h2>{{this.title}}</h2> 
+          <p><strong>ISBN:</strong> {{this.isbn}}</p> 
+          <p><strong>Page Count:</strong> {{this .pageCount}}</p> 
+          <p><strong>Published Date:</strong> {{this.publishedDate.$date}}]</p>
+          <p><strong></strong>Short Description:</strong> {{this.shortDescription}}</p> 
+          <p><strong></strong>Long Description:</strong> {{this.longDescription}}</p> 
+          <p><stron>Authors:</strong> {{this.authors}}</p>
+          <p><strong>Categories:</strong> {{this.categories}}</p>
+        </li>
+    {{/each}}
+          </ul>
+  {{/if}}
 </content>

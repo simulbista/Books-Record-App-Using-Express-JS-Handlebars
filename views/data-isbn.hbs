@@ -1,3 +1,23 @@
 <content>
-<h1>The book isbn for index no. {{this.searchedINo}} is {{this.foundIsbn}}</h1>
+  {{#if submittedTitle}}
+    <ul class="books-ul">
+      <li class="books-ul-li">
+        <h1>The book with ISBN
+          {{foundBook.isbn}}
+          exists:</h1>
+        <h2>{{foundBook.title}}</h2>
+        <p><strong>ISBN:</strong> {{foundBook.isbn}}</p>
+        <p><strong>Page Count:</strong> {{foundBook.pageCount}}</p>
+        <p><strong>Published Date:</strong>
+          {{foundBook.publishedDate.$date}}</p>
+        <p><strong>Short Description:</strong>
+          {{foundBook.shortDescription}}</p>
+        <p><strong>Long Description:</strong> {{foundBook.longDescription}}</p>
+        <p><strong>Authors:</strong> {{foundBook.authors}}</p>
+        <p><strong>Categories:</strong> {{foundBook.categories}}</p>
+      </li>
+    </ul>
+  {{else}}
+    <h1> The book with ISBN {{searchedIsbnNo}} does not exist!</h1>
+  {{/if}}
 </content>
