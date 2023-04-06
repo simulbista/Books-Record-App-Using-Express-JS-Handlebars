@@ -1,0 +1,29 @@
+<h1>Books (Tabular Format)</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>Page Count</th>
+        <th>Published Date</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+        <th>Authors</th>
+        <th>Categories</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each books}}
+        <tr {{#if (eq this.pageCount 0)}} class="highlight" {{/if}}>
+          <td>{{this.title}}</td>
+          <td>{{this.isbn}}</td>
+          <td>{{this.pageCount}}</td>
+          <td>{{this.publishedDate.$date}}</td>
+          <td>{{this.shortDescription}}</td>
+          <td>{{this.longDescription}}</td>
+          <td>{{this.authors}}</td>
+          <td>{{this.categories}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>

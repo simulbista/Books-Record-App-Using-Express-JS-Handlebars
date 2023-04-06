@@ -18,10 +18,9 @@ const hbs = handlebars.create({
   defaultLayout: "index",
   partialsDir: `${__dirname}/views/partials`,
 
-  // create custom helpers
+  // create custom helpers - function that returns true if param1 is equal to param2
   helpers: {
     eq: function (a, b) {
-      console.log("a:", a, "b:", b);
       return a === b;
     },
   },
@@ -71,7 +70,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Process POST request through the form for title search
 app.post("/submittedTitle", function (req, res, next) {
-  // console.log('im in app.js');
   const myData = fs.readFileSync("books.json");
   const books = JSON.parse(myData);
   let foundBook,notfoundBook = {};
@@ -84,13 +82,19 @@ app.post("/submittedTitle", function (req, res, next) {
   }
 
   if (foundBook) {
-    console.log(foundBook);
     res.render("data", { foundBook: foundBook, submittedTitle: submittedTitle });
   } else {
     res.render("data", { notfoundBook: notfoundBook,submittedTitle: submittedTitle });
   }
 });
 
+
+//display books.json data in tabular format
+app.get("/allData", (req, res) => {
+  const myData = fs.readFileSync("books.json");
+  const books = JSON.parse(myData);
+  res.render("all-data", { books });
+});
 
 app.listen(port, () => {
   console.log(`App listening to port ${port}!`);
