@@ -10,7 +10,7 @@ const port = 3000;
 const handlebars = require("express-handlebars");
 const fs = require("fs");
 
-//register eq helper method to be used in data.hbs to compare if searched title from the form exists in books.json
+//register custom eq helper method to be used in data.hbs to compare if searched title from the form exists in books.json
 const hbs = handlebars.create({
   layoutsDir: `${__dirname}/views/layouts`,
   //reduce handlebars extension name to hbs
@@ -32,6 +32,7 @@ app.engine("hbs", hbs.engine);
 // Serve static files from the public directory
 app.use(express.static("public"));
 
+// call main.hbs for / url
 app.get("/", (req, res) => {
   res.render("main");
 });
@@ -43,6 +44,7 @@ app.get("/data", (req, res) => {
   res.render("data", { books });
 });
 
+//display books by isbn passed through url
 app.get("/data/isbn/:isbn", (req, res) => {
   const myData = fs.readFileSync("books.json");
   const books = JSON.parse(myData);
