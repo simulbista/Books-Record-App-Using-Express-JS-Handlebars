@@ -7,7 +7,7 @@ body{
 }
 
 content{
-    padding:20px;
+    /* padding:20px; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -22,7 +22,7 @@ h1{
 }
 
 h2{
-    padding-left: 100px;
+    /* padding-left: 100px; */
     color: blueviolet;
 }
 
@@ -59,15 +59,15 @@ li{
 
 .books-ul{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .books-ul-li{
     background-color: beige;
-    margin-bottom: 50px;
-    width: 350px;
+    width: 25%;
+    margin: 20px;
+    padding: 20px;
 }
 
 search{

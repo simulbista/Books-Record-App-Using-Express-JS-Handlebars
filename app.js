@@ -74,7 +74,7 @@ app.post("/submittedTitle", function (req, res, next) {
   // console.log('im in app.js');
   const myData = fs.readFileSync("books.json");
   const books = JSON.parse(myData);
-  let foundBook,notfoundBook = null;
+  let foundBook,notfoundBook = {};
   submittedTitle = req.body.title;
   for (let id = 0; id < books.length; id++) {
     if (books[id].title === submittedTitle) {

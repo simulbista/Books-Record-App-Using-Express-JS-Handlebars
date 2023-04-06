@@ -5,7 +5,11 @@
       type="text"
       name="title"
       id="form-text"
+       
       placeholder="Enter Book Title"
+      {{#if foundBook}}
+      value = "{{submittedTitle}}"
+        {{/if}}
     />
     <input type="submit" id="form-submit" value="Search" />
   </form>
@@ -28,10 +32,10 @@
       </li>
     </ul>
   {{else if notfoundBook}}
-    <h1> The book with the title {{submittedTitle}} does not exist!</h1>
+    <h1> The book with the title " {{submittedTitle}} " does not exist!</h1>
   {{else}}
     {{! default mode i.e. display all the books }}
-    <ul class="books-ul"></ul>
+    <ul class="books-ul">
     {{#each books}}
         <li class="books-ul-li">
           <h2>{{this.title}}</h2> 
@@ -44,6 +48,6 @@
           <p><strong>Categories:</strong> {{this.categories}}</p>
         </li>
     {{/each}}
-          </ul>
+    </ul>
   {{/if}}
-</content>
+  </content>
